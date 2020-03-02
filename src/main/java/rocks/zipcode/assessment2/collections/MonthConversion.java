@@ -1,14 +1,25 @@
 package rocks.zipcode.assessment2.collections;
 
+import javax.xml.bind.annotation.XmlType;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Use a map to solve
  */
 public class MonthConversion {
+    Map<Integer,String> calender = new HashMap<>();
+
+
     /**
+     *
      * @param monthNumber - ordinal of month in the year; i.e. January = 1, February = 2
      * @param monthName - name of month
      */
+
     public void add(Integer monthNumber, String monthName) {
+      this.calender.put(monthNumber,monthName);
 
     }
 
@@ -17,7 +28,18 @@ public class MonthConversion {
      * @return the name of the respective month
      */
     public String getName(Integer monthNumber) {
-        throw new NullPointerException();
+        String name="";
+
+        for (Map.Entry<Integer,String> num :calender.entrySet()){
+            if (monthNumber.equals(num.getKey()))
+                name=num.getValue();
+        }
+
+
+        return name;
+
+
+
     }
 
     /**
@@ -25,7 +47,24 @@ public class MonthConversion {
      * @return - the ordinal of the month in the year
      */
     public int getNumber(String monthName) {
-        return (Integer)null;
+
+        int num = 0;
+        String nulll= null;
+        try {
+            for (Map.Entry<Integer, String> name : calender.entrySet()) {
+                if (monthName.equals(name.getValue())) {
+                    num = name.getKey();
+                    return num;
+
+                }
+            }
+        } catch (NullPointerException n){
+            return Integer.parseInt(nulll);
+
+        }
+
+
+         return num;
     }
 
     /**
@@ -33,7 +72,8 @@ public class MonthConversion {
      * @return true if the monthNumber is in the keySet
      */
     public Boolean isValidNumber(Integer monthNumber) {
-        return null;
+
+        return calender.containsKey(monthNumber);
     }
 
     /**
@@ -41,14 +81,14 @@ public class MonthConversion {
      * @return true if the monthName is in the valueSet
      */
     public Boolean isValidMonth(String monthName) {
-        return null;
+        return calender.containsValue(monthName);
     }
 
     /**
      * @return number of entries in this mapping
      */
     public Integer size() {
-        return -1;
+        return calender.size();
     }
 
     /**
@@ -56,6 +96,7 @@ public class MonthConversion {
      * @param monthName - name of month
      */
     public void update(Integer monthNumber, String monthName) {
+        calender.replace(monthNumber,monthName);
 
     }
 }
