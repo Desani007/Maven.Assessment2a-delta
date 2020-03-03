@@ -36,7 +36,7 @@ public class MonthConversion {
         }
 
 
-        return name;
+        return name == "" ? null : name;
 
 
 
@@ -46,7 +46,7 @@ public class MonthConversion {
      * @param monthName - name of month
      * @return - the ordinal of the month in the year
      */
-    public int getNumber(String monthName) {
+    public Integer getNumber(String monthName) {
 
         int num = 0;
         String nulll= null;
@@ -54,17 +54,16 @@ public class MonthConversion {
             for (Map.Entry<Integer, String> name : calender.entrySet()) {
                 if (monthName.equals(name.getValue())) {
                     num = name.getKey();
-                    return num;
-
                 }
             }
+            return num == 0 ? null : num;
         } catch (NullPointerException n){
-            return Integer.parseInt(nulll);
+            return null;
 
         }
 
 
-         return num;
+//         return num;
     }
 
     /**

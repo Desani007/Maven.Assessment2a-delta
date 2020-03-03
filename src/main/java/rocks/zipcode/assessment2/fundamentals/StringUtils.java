@@ -65,8 +65,8 @@ return String.join("",Collections.nCopies(numberOfTimeToRepeat,stringToBeRepeate
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        String stringA=string.replaceAll(" ","");
 
-        return stringA.matches("[$&+,:;=\\\\\\\\?@#|/'<>.^*()%!-]");
+       return string.matches("[$&+,:;=?@#|/'<>.^*()%!]+");
+
     }
 }
